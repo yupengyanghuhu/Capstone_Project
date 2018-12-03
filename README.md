@@ -1,7 +1,7 @@
 # Capstone_Project
 ## This project is a Webpage-based Project, I will present this project by using webpages in class.
 <br />
-#### Webpages codes (html) files can be found in the codes folders, they are Home.html, Intro.html, Data.html, Analysis.html.
+<h3> Webpages codes (html) files can be found in the codes folders, they are Home.html, Intro.html, Data.html, Analysis.html.</h3>
 #### Webpages codes files (e.g. Intro.html) can be opened by Google Chrome browser.
 <br />
 #### Web scraping & analysis codes (python) files can be found in the codes folders, they are Movie Revenue (country data).ipynb ## and Movie Revenue (company data & time series ananlysis).ipynb
