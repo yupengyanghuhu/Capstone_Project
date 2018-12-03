@@ -1,0 +1,161 @@
+<!DOCTYPE HTML>
+
+<html>
+<head>
+	<title>YupengYang(Capstone_Project)</title>
+	<link rel="stylesheet" type="text/css" href="styles&images/style.css">
+	<link rel="icon" href="styles&images/dog.jpg">
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+</head>
+
+<body>
+	<div id="main">
+		<div id="header">
+			<div id="logo">
+				<div id="logo_text">
+					<h1>
+						<a href="Home.html">
+							<b>Yupeng Yang</b>
+							<span class="logo_color">
+							| <b>Capstone Project</b></span>
+						</a>
+					</h1>
+					<h2><b>Data Science, The George Washington University</b></h2>
+				</div><!-- logo_text -->
+			</div><!-- logo -->
+			<div id="menubar">
+				<ul id="menu">
+					<!-- put class="selected" in the li tag -->
+					<!-- for the selected page to highlight -->
+					<li><a href="Home.html"><b>Home</b></a></li>
+					<li><a href="Intro.html"><b>Intro</b></a></li>
+					<li><a href="Data.html"><b>Data</b></a></li>
+					<li class="selected"><a href="Analysis.html"><b>Analysis</b></a></li>
+
+				</ul>
+			</div><!-- menubar -->
+		</div><!-- header -->
+		
+		<div id="site_content">
+			<div class="sidebar_data">
+				<div class="dataanalysis"> </div>
+
+			<div class="sidebar_analysis">
+				<br /><br /><br /><br />
+				<div class= "rolling_explain">
+					<p><b>Rolling Average</b> is a <b>smoother version</b> of the original trend plot (calculating the sum of previous 3 quarters revenue and later 3 quarters revenue for that quarter then divided by 6). Calculating the mean value for every quarter, then plot and line them in the graph (indicated by red line)</p>
+					<ul>
+						<br /><br />
+						<li><b>Disney: Uptrend 🆙</b><br /><br /><br /></li>
+						<li><b>Sony: Fluctuate ⏫⏬</b><br /><br /><br /></li>
+						<li><b>Lionsgate: Uptrend 🆙</b><br /><br /><br /></li>
+					</ul>
+				</div>
+
+				<div class= "norm_explain">
+					<p><b>🕘 Normalization process:</b> Dividing each quarter's revenue from 2000 to 2018 by the first quarter in 2000. This way can make these series <b>all start from the same point</b> and easily compare the <b>growth rate</b>.</p>
+					<p>We can conclude Lionsgate outperforms other 2 companies revenue growth.</p>
+				</div>
+
+				<div class= "stationarity_explain1">
+				</div>
+
+				<div class= "stationarity_explain2">
+					
+					<p>Using the Augmented Dickey-Fuller (ADF) test to see whether the time series is stationary or not.
+					<p>The <b>null</b> hypothesis of the test is that the trend is not stationary (has time-dependent structure).</p>
+					<p>The <b>alternative</b> hypothesis is that the time series is stationary (the time series are independent to time).</p>
+				</div>
+
+				<div class= "forcast_explain">
+					<ul>
+						<br /><br />
+						<li><b>AR: Autoregression.</b> A model that uses the dependent relationship between a quarter revenue and some number of previous quarter revenues. <br /><br />
+							<p>Formula Examples:</p>
+							<p>AR(1): y_2011_Q4 = b1* y_2011_Q3</p> 
+							<p>AR(2): y_2011_Q4 = b1* y_2011_Q3 + b2* y_2011_Q2</p> 
+							<p>AR(3): y_2011_Q4 = b1* y_2011_Q3 + b2* y_2011_Q2 +b3* y_2011_Q1</p>
+							</li>
+
+						<li><b>I: Integrated.</b> The use of differencing of quarter revenues in order to make the time series stationary. (e.g. "I" = 1: calculating the value difference of revenue in 2011 Q1 from 2011 Q2 only once.)</li><br />
+
+						<li><b>MA: Moving Average.</b> A model that uses the dependency between a quarter revenue and a residual error from a moving average model applied to previous quarter revenue.<br /><br />
+							<p>Formula Examples:</p>
+							<p>MA(1): ε_2015_Q4 = b1*ε_2015_Q3</p> 
+							<p>MA(2): ε_2015_Q4 = b1*ε_2015_Q3 + b2*ε_2015_Q2</p> 
+							<p>MA(3): ε_2015_Q4 = b1*ε_2015_Q3 + b2*ε_2015_Q2+ b3*ε_2015_Q1</p>
+							</li>
+					</ul>
+				</div>
+
+
+						
+
+				</div><!-- sidebar_analysis -->
+				
+				
+
+			</div><!-- sidebar -->
+
+			<div id="content_analysis">
+				<br /><br />
+				<center><h2><b>Time Series Analysis for 3 Studios</b></h2></center>
+
+				<h4><a href="https://www.statisticssolutions.com/time-series-analysis/"><b>Time series analysis</b></a> is a classic statistical technique that deals with time series data, or <b>trend</b> analysis.  Time series data means that data is in a series of particular <b>time periods</b> or <b>intervals</b>. There are some time series methods I used to analyze whether the dataset has trend or not:</h4><br />
+
+				<h3><b>+++Rolling Average+++</b></h3>
+				<div class="rolling_mean"> </div>
+				<br /><br />
+
+				<h3><b>+++Normalization+++</b></h3>
+				<div class="Normalization"> </div>
+				<br /><br />
+
+				<h3><b>+++Stationarity Testing+++</b></h3>
+				<h4><i>The observations in a stationary time series are independent to time and no trend or seasonal effects. </i></h4>
+				<h4><b>👉Goal:</b> Checking whether there is any <b>evidence of a trend</b> or seasonal effects and, if there is, remove them. The reason is that <b>classical time series analysis</b> and forecasting methods are concerned with <b>making non-stationary time series data stationary</b>.</h4>
+				<br /><br />
+				
+				<p>1️⃣Evenly Split from Middle:</p>
+				<div class="Stationarity1"> </div><br /><br />
+				<h4><b>Example:</b> For Disney, first I <b>evenly split</b> the time series into two contiguous sequences, then calculate mean and variance of each group. 
+					<h4>--Mean of the first group is <b>much different</b> from the second group <h4>
+					<h4>--Variance of the first group is <b>much different</b> from the second group <h4>
+
+					<h4>So, the Disney box office revenue trend is a <b>non-stationary</b> time series.</h4>
+
+
+				<br /><br />
+				<p>2️⃣Augmented Dickey-Fuller test result:</p>
+				<div class="Stationarity2"> </div><br />
+				<h4><b>Conclusion:</b> Based on the <b>p-values</b> result above:
+				<br />
+				<h4><b>😊Reject the null hypothesis of Sony</b> (p < 5%) and conclude the time series is stationary for Sony, it does not have time-dependent structure.</h4>
+				<h4><b>☹️Fail to reject the null hypothesis of Disney and Lionsgate</b> (p >  5%), so the time series of these two companies are non-stationary, they have time-dependent structures.</b></h4>
+				<br /><br />
+
+				<h3><b>+++Forecasting+++</b></h3>
+				<p style="color:red;"><a href="https://www.investopedia.com/terms/a/autoregressive-integrated-moving-average-arima.asp" style="color:red;">ARIMA Model</a> (A Simple Example)</p>
+				<div class="ARIMA"> </div><br />
+				<div class="prediction"> </div><br />
+				<h5>👆Plot of predicted box office revenue trend for Disney (2014-18) in the testing dataset</h5>
+				<h5>(p,d,q) = (3,1,0)</h5>
+				<br /><br />
+				
+			</div>
+
+
+
+		</div><!-- site_content -->
+
+
+		<div id="footer">
+			&copy; <script>var d = new Date(); document.write(d.getFullYear());</script>
+			| <a href="https://datasci.columbian.gwu.edu/">GWU</a>
+			| <a href="https://datasci.columbian.gwu.edu/">Data Science</a>
+			| <a href="#">Capstone Project</a>
+			| <a href="#">Developed by Yupeng Yang</a>
+		</div><!-- footer -->
+	</div><!-- main -->
+</body>
+</html>

@@ -1,0 +1,173 @@
+<!DOCTYPE HTML>
+
+<html>
+<head>
+	<title>YupengYang(Capstone_Project)</title>
+	<link rel="stylesheet" type="text/css" href="styles&images/style.css">
+	<link rel="icon" href="styles&images/dog.jpg">
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+	<script type="text/javascript">
+		google.charts.load('current', {'packages':['corechart']});
+		google.charts.setOnLoadCallback(drawAllSheets);
+		
+		function drawAllSheets() {
+			
+			drawSheetName('country_revenue',
+						  'SELECT A,F',
+						  country_revenue_plot);
+		} //drawAllSheets()
+		
+		function drawSheetName(sheetName, query, plot) {
+			
+			var queryString = encodeURIComponent(query);
+			var query = new google.visualization.Query(
+				'https://docs.google.com/spreadsheets/d/1ct1wXQUnAv9ux4cefajX8YBIuRvHqvzDVYPWA-GXsQg/gviz/tq?sheet=' 
+				+ sheetName + '&headers=1&tq=' + queryString);
+
+			query.send(plot);
+		} //drawSheetName
+		
+		function checkError(response) {
+			if (response.isError()) {
+				alert('Error in query: ' + response.getMessage() +
+					 ' ' + response.getDetailedMessage());
+				return;
+			}
+		} //checkError
+		
+		function country_revenue_plot(response) {
+		
+			checkError(response);
+			var data = response.getDataTable();
+			data.sort({column: 1, desc: true});
+			
+			var options = {
+				colorAxis: {colors: ['#ffcccc', '#ff0000']}, //white to red
+			};
+			
+			var chart = new google.visualization.GeoChart(document.getElementById('countryrevenue_div'));
+			chart.draw(data, options);
+		} //country_revenue_plot
+
+		
+	</script>
+</head>
+
+<body>
+	<div id="main">
+		<div id="header">
+			<div id="logo">
+				<div id="logo_text">
+					<h1>
+						<a href="Home.html">
+							<b>Yupeng Yang</b>
+							<span class="logo_color">
+							| <b>Capstone Project</b></span>
+						</a>
+					</h1>
+					<h2><b>Data Science, The George Washington University</b></h2>
+				</div><!-- logo_text -->
+			</div><!-- logo -->
+			<div id="menubar">
+				<ul id="menu">
+					<!-- put class="selected" in the li tag -->
+					<!-- for the selected page to highlight -->
+					<li><a href="Home.html"><b>Home</b></a></li>
+					<li><a href="Intro.html"><b>Intro</b></a></li>
+					<li class="selected"><a href="Data.html"><b>Data</b></a></li>
+					<li><a href="Analysis.html"><b>Analysis</b></a></li>
+
+				</ul>
+			</div><!-- menubar -->
+		</div><!-- header -->
+		
+		<div id="site_content">
+			<div class="sidebar_data">
+				<div class="datapic"> </div>
+				
+				<br /><br /><br />
+				<h3><b>About the data source:</b></h3><br />
+
+				<h4><b>Box Office Mojo</b> (<a href="https://www.boxofficemojo.com/">http://www.boxofficemojo.com</a>), is the <b>leading online</b> box-office reporting service website. Box Office Mojo is owned and operated by <b>IMDb</b> (<a href="www.imdb.com">www.imdb.com</a>), the <b>#1 movie information website in the world.</b></h4><br />
+
+				<h4>IMDb is the world's most popular and authoritative source for movie, TV and celebrity content. The IMDb consumer site (<a href="www.imdb.com">www.imdb.com</a>) is the #1 movie website in the world with a combined web and mobile audience of more than 250 million unique monthly visitors.</h4>
+			
+				<div class="sidebarT">
+					<h2>+++Selected Countries+++</h2>
+						<ul>
+							<li><h4><b>🇦🇺Australia🇦🇺</b></h4><br /></li>
+							<li><h4><b>🇧🇷Brazil🇧🇷</b></h4><br /></li>
+							<li><h4><b>🇨🇳China🇨🇳</b></h4><br /></li>
+							<li><h4><b>🇫🇷France🇫🇷</b></h4><br /></li>
+							<li><h4><b>🇺🇸United States🇺🇸</b></h4><br /></li>
+						</ul>
+
+					<h2>+++Selected Companies+++</h2><br />
+						<ul>
+							<li><h4><b>Disney</b></h4><br /><br /></li>
+							<li><h4><b>Sony</b></h4><br /><br /></li>
+							<li><h4><b>Lionsgate</b></h4><br /><br /></li>
+						</ul>
+							<div class="movies"></div>
+						
+
+				</div><!-- sidebarT -->
+			</div><!-- sidebar -->
+
+			<div id="content_data">
+				<h2><b>+++Description+++</b></h2>
+
+				<div class="mojo_us"> </div>
+				<div class="mojo_aus"> </div>
+				<br /><br />
+
+				
+			</div>
+
+			<div id="content_scraping">
+				<hr /><br />
+				<h2><b>+++Web Scraping+++</b></h2>
+				<h4><a href="https://www.webharvy.com/articles/what-is-web-scraping.html"><b>Web Scraping</b></a> (also termed Screen Scraping, Web Data Extraction, Web Harvesting etc.) is a technique employed to <b>extract large amounts of data from websites</b> whereby the data is extracted and <b>save to a local file in your computer</b> or to a database in table (spreadsheet) format.</h4>
+				<br />
+				<div class="scraping1"> </div>
+				<div class="scraping2"> </div><br />
+				<h4>The scraping process details and codes can be found in my project codes files.</h4>
+
+				<br /><br /><hr /><br />
+
+				<center>
+					<h2><b>Countries Data (5 countries 2014-2018)</b></h2>
+					<div class="data_countries"> </div>
+
+					<br /><br />
+					<h5><b>Total Box Office Revenues 2018 (Unit: $Million)</b></h5>
+					<div id="countryrevenue_div"
+				     	style="width: 700px; height: 400px;"></div><br />
+				    <h5>Google Map JavaScript API: allows communication with Google Map Services and their JavaScript library.</h5>	
+
+					<br /><br /><hr /><br />
+					<h2><b><center>Companies Data (3 major studios 2000-2018)</b></h2>
+					<div class="data_companies"> </div>
+					<br /><br />
+					<div class="studios"> </div>
+				</center>
+
+
+
+			</div>
+
+
+
+		</div><!-- site_content -->
+
+
+		<div id="footer">
+			&copy; <script>var d = new Date(); document.write(d.getFullYear());</script>
+			| <a href="https://datasci.columbian.gwu.edu/">GWU</a>
+			| <a href="https://datasci.columbian.gwu.edu/">Data Science</a>
+			| <a href="#">Capstone Project</a>
+			| <a href="#">Developed by Yupeng Yang</a>
+		</div><!-- footer -->
+	</div><!-- main -->
+</body>
+</html>
